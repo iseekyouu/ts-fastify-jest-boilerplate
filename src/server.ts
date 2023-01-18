@@ -1,6 +1,7 @@
 import { AppOptions, buildApp } from './app';
 
 const options: AppOptions = {
+  logger: true,
 };
 
 const bootstrap = async () => {
@@ -12,7 +13,7 @@ const bootstrap = async () => {
       host: app.config.HOST,
     });
 
-    console.log('Server starterd at', res);
+    app.log.info('Server starterd at', res);
 
   } catch (err) {
     app.log.error(err);
