@@ -33,15 +33,20 @@ declare module 'fastify' {
 export const buildApp: AppBuilder = async (options) => {
   const fastify = Fastify(options);
 
+  // schema with env overrider
   await fastify.register(fastifyEnv, {
     dotenv: true,
     schema: configSchema,
+    confKey: 'config',
   });
 
+  // extends http statuses
   fastify.register(sensible);
 
+  // prometheus
   prom.register.clear();
 
+  // /metrics endpoint
   fastify.register(metricsPlugin, {
     endpoint: '/metrics',
     defaultMetrics: { enabled: false },
@@ -54,11 +59,13 @@ export const buildApp: AppBuilder = async (options) => {
     },
   });
 
+  // cors
   fastify.register(fastifyCors, {
     origin: fastify.config.ALLOWED_ORIGINS.split(', '),
     credentials: true,
   });
 
+  // /health endpoint
   fastify.register(fastifyHealthcheck);
 
   fastify.register(fastifySwagger, {

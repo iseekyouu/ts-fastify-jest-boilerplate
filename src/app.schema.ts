@@ -1,4 +1,4 @@
-export const configSchema: object = {
+export const configSchema = {
   type: 'object',
   required: [
     'HOST',

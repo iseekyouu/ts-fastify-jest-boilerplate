@@ -8,16 +8,16 @@ const bootstrap = async () => {
   const app = await buildApp(options);
 
   try {
-    const res = await app.listen({
+    await app.listen({
       port: app.config.PORT || 3000,
       host: app.config.HOST,
     });
 
-    app.log.info('Server starterd at', res);
-
+    app.swagger();
   } catch (err) {
     app.log.error(err);
     process.exit(1);
   }
 };
+
 void bootstrap();
