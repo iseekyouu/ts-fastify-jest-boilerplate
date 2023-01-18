@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "commonjs",
+    "strictNullChecks": true,
+    "outDir": "dist",
+    "noImplicitAny": true,
+    "baseUrl": "src",
+    "incremental": true,
+    "strictBindCallApply": false,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators":true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "test",
+    "**/.history"
+  ],
+  "include": ["src/**/*.ts", "workers.ts"]
+}
